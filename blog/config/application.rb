@@ -1,7 +1,6 @@
 require 'simplemvc'
 
-app_base = "#{File.dirname(File.expand_path(__FILE__))}/.."
-Dir.glob("#{app_base}/app/controllers/*.rb").each { |i| require i } # require '../app/controller/..rb'
+$LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'app', 'controllers')
 
 module Blog
   class Application < Simplemvc::Application
