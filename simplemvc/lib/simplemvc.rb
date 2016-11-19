@@ -17,7 +17,7 @@ module Simplemvc
       end
 
       controller_class, action = get_controller_and_action(env)        # => Object.const_get("PagesController"), "about"
-      response = controller_class.new.send(action)            # => Object.const_get("PagesController").new.send("about")
+      response = controller_class.new(env).send(action)            # => Object.const_get("PagesController").new.send("about")
 
       [200, { 'Content-Type' => 'text/html' }, [ response ]]                                       # returns this lambda
     end

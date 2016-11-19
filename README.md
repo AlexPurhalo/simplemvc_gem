@@ -31,3 +31,20 @@
     <li>input: http://localhost:8080/pages/about</li>
     <li>output: text: Hello, Alex. Or should call you Mr. Purkhalo</li>
 </ul>
+
+<h4>Rack request</h4>
+<ul>
+    <li>$ pry</li>
+    <li>pry(main)> require 'rack'</li>
+    <li>pry(main)>  Rack::Handler::WEBrick.run -> (env) { puts Rack::Request.new(env).inspect; [200, {}, []]}</li>
+    <li>$ curl http://localhost:8080/</li>
+    <li>output in pry console: @env object with it's stuff</li>
+    <li>pry(main)> require 'rack'</li>
+    <li>pry(main)>  Rack::Handler::WEBrick.run -> (env) { puts Rack::Request.new(env).params; [200, {}, []]}</li>
+    <li>output in pry console: params is empty object, so it shows empty ahsh {}</li>
+    <li>$ curl http://localhost:8080/?id\="hello"</li>
+    <li>output: following hash: {"id"=>"hello"}</li>
+    <li>pry(main)>  Rack::Handler::WEBrick.run -> (env) { Rack::Response.new ['Hello'], 200, { 'Content-Type' => 'text/html' } }</li>
+    <li>$ curl http://localhost:8080/</li>
+    <li>output: after curl command executing you should see Hello text in the same console, there was response</li>
+</ul>
