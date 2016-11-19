@@ -55,4 +55,5 @@
     <li>pry(main)>  Rack::Handler::WEBrick.run -> (env) { Rack::Response.new ['Hello'], 200, { 'Content-Type' => 'text/html' } }</li>
     <li>$ curl http://localhost:8080/</li>
     <li>output: after curl command executing you should see Hello text in the same console, there was response</li>
+    <li>run the server and check a console, ensure that it puts 'before' and 'after' sucessfully</li>
 </ul>

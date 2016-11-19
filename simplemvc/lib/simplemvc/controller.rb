@@ -2,23 +2,27 @@ require 'erubis'
 
 module Simplemvc
   class Controller
-    attr_reader :request # def request; @request; end
+    attr_reader :request # def request; @request; end                                                 # receives request
 
-    def initialize(env)
-      @request ||= Rack::Request.new(env)
+    def initialize(env); @request ||= Rack::Request.new(env); end             # transforms received request to rack hash
+
+    def params; request.params; end                                                           # returns request's params
+
+    def response(body, status=200, header={})
+      @response = Rack::Response.new(body, status, header)                                           # receives response
     end
 
-    def params
-      request.params
-    end
+    def get_response; @response; end                                                                  # returns response
 
-    def render(view_name, local = {})
+    def render(*args); response(render_template(*args)); end                                  # receives render template
+
+    def render_template(view_name, local = {})                                                   # renders view template
       filename = File.join('app', 'views', controller_name, "#{view_name}.erb" )
       template = File.read(filename)
       Erubis::Eruby.new(template).result(local)
     end
 
-    def controller_name
+    def controller_name                                              # helper method to receive changed controller name
       self.class.to_s.gsub(/Controller/, '').to_snake_case
     end
   end
