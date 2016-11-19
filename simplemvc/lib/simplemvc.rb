@@ -1,5 +1,6 @@
 require 'simplemvc/version'
 require 'simplemvc/controller'
+require 'simplemvc/utils'
 
 module Simplemvc
   class Application
@@ -9,7 +10,7 @@ module Simplemvc
 
       def get_controller_and_action(env)
         _, controller_name, action_name = env['PATH_INFO'].split('/')     # => "pages", "about" = ["", "pages", "about"]
-        controller_name = controller_name.capitalize + 'Controller'                               # => "PagesController"
+        controller_name = controller_name.to_camel_case + 'Controller'                            # => "PagesController"
         # const_get('some_name') - looks to constant by the name param
         [Object.const_get(controller_name), action_name]             # => [Object.const_get("PagesController"), "about"]
       end
