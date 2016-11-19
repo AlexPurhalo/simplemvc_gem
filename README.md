@@ -1,3 +1,11 @@
+<h3>App Usage</h3>
+<ul>
+    <li>cd simplemvc</li>
+    <li>gem build simplemvc.gemspec</li>
+    <li>gem install simplemvc-0.1.0.gem</li>
+    <li>cd ../blog && bundle exec rackup -p 8080</li>
+</ul>
+
 <h3>Development process</h3>
 <h4>Bundle setting</h4>
 <ul>
