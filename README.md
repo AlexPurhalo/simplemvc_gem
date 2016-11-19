@@ -24,3 +24,10 @@
     <li>input: http://localhost:8080/pages/about</li>
     <li>otput: text: "Something about me :)"</li>
 </ul>
+
+<h4>Views rendering</h4>
+<ul>
+    <li>$ cd blog && bundle exec rackup -p 8080</li>
+    <li>input: http://localhost:8080/pages/about</li>
+    <li>output: text: Hello, Alex. Or should call you Mr. Purkhalo</li>
+</ul>
