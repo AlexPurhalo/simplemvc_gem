@@ -19,7 +19,14 @@ module Simplemvc
     def render_template(view_name, local = {})                                                   # renders view template
       filename = File.join('app', 'views', controller_name, "#{view_name}.erb" )
       template = File.read(filename)
-      Erubis::Eruby.new(template).result(local)
+
+      vars = {}
+      instance_variables.each do |var|
+        key = var.to_s.gsub('@', '').to_sym  # @name => name; @age => age
+        vars[key] = instance_variable_get(var) # { name: 'alex', age: 20}
+      end
+
+      Erubis::Eruby.new(template).result(local.merge(vars))
     end
 
     def controller_name                                              # helper method to receive changed controller name

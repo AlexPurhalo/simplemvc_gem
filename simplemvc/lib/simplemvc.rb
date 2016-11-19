@@ -23,7 +23,9 @@ module Simplemvc
       if controller.get_response
         controller.get_response
       else
-        [200, { 'Content-Type' => 'text/html' }, [ response ]]
+        controller.render(action)
+        controller.get_response
+        # [200, { 'Content-Type' => 'text/html' }, [ response ]]
       end
     end
   end
