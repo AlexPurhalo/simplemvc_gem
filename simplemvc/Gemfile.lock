@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     simplemvc (0.1.0)
-      erubis
-      rack
+      erubis (~> 2.7)
+      rack (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
